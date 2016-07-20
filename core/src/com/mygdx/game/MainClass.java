@@ -6,10 +6,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.util.Random;
+
 public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	//Texture img;
-	Asteroid ast = new Asteroid(50, 50, 3.0f, 0.0f);
+	private final int AST_COUNT = 100;
+	Asteroid[] ast = new Asteroid[AST_COUNT];
+	Random rand = new Random();
 	//float x;
 	//float y;
 
@@ -18,6 +22,9 @@ public class MainClass extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		//img = new Texture("asteroid.tga");
 		Asteroid.setMyTexture(new Texture("asteroid.tga"));
+		for (int i = 0; i < AST_COUNT; i++) {
+			ast[i] = new Asteroid(rand.nextInt(800), rand.nextInt(600), (3.0f * rand.nextFloat() - 0.5f), (3.0f * rand.nextFloat() - 0.5f));
+		}
 	}
 
 	@Override
@@ -29,14 +36,20 @@ public class MainClass extends ApplicationAdapter {
 
 
 		//batch.draw(img, ast.getX(), ast.getY());
-		ast.render(batch);
+		for (int i = 0; i < AST_COUNT; i++) {
+			ast[i].render(batch);
+		}
+
 
 
 		batch.end();
 	}
 
 	public void update(){
-		ast.update();
+		for (int i = 0; i < AST_COUNT; i++) {
+			ast[i].update();
+		}
+
 	}
 	
 	@Override
