@@ -11,7 +11,7 @@ import java.util.Random;
 public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	//Texture img;
-	private final int AST_COUNT = 100;
+	private final int AST_COUNT = 10;
 	Asteroid[] ast = new Asteroid[AST_COUNT];
 	Random rand = new Random();
 	//float x;

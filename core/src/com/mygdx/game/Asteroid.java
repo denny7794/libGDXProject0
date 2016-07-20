@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -37,9 +38,9 @@ public class Asteroid {
     public void update(){
         x += vx;
         y += vy;
-        if(x < -40) x = 800;
-        if(y < -40) y = 600;
-        if(x > 800) x =-40;
-        if(y > 600) y = -40;
+        if(x < -myTexture.getWidth()) x = Gdx.graphics.getWidth();
+        if(y < -myTexture.getHeight()) y = Gdx.graphics.getHeight();
+        if(x > Gdx.graphics.getWidth()) x =-myTexture.getWidth();
+        if(y > Gdx.graphics.getHeight()) y = -myTexture.getHeight();
     }
 }
