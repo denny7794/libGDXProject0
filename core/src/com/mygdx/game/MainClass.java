@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
+	Asteroid ast = new Asteroid(50, 50, 2.0f, 0.0f);
 	float x;
 	float y;
 
@@ -25,18 +26,15 @@ public class MainClass extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 
-		x += 1.5;
-		y++;
-		batch.draw(img, x, y);
 
+		batch.draw(img, ast.getX(), ast.getY());
 
 
 		batch.end();
 	}
 
 	public void update(){
-		x ++;
-		y++;
+		ast.update();
 	}
 	
 	@Override

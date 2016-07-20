@@ -16,4 +16,17 @@ public class Asteroid {
         this.vx = vx;
         this.vy = vy;
     }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void update(){
+        x += vx;
+        y += vy;
+    }
 }
