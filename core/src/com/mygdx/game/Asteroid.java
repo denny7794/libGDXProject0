@@ -1,5 +1,8 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 /**
  * Created by Denis on 20.07.2016.
  */
@@ -9,6 +12,7 @@ public class Asteroid {
     private float y;
     private float vx;
     private float vy;
+    private static Texture myTexture;
 
     public Asteroid(float x, float y, float vx, float vy) {
         this.x = x;
@@ -17,13 +21,18 @@ public class Asteroid {
         this.vy = vy;
     }
 
-    public float getX() {
-        return x;
+    public static void setMyTexture(Texture myTexture) {
+        Asteroid.myTexture = myTexture;
     }
 
-    public float getY() {
-        return y;
+    public float getX() { return x; }
+
+    public float getY() { return y; }
+
+    public void render(SpriteBatch batch){
+        batch.draw(myTexture, x, y);
     }
+
 
     public void update(){
         x += vx;
