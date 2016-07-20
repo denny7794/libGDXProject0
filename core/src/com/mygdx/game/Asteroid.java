@@ -28,6 +28,9 @@ public class Asteroid {
     public void update(){
         x += vx;
         y += vy;
+        if(x < -40) x = 800;
+        if(y < -40) y = 600;
         if(x > 800) x =-40;
+        if(y > 600) y = -40;
     }
 }
