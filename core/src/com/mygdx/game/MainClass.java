@@ -10,34 +10,33 @@ public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	float x;
-	float x2 = -256;
-	
+	float y;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		img = new Texture("asteroid.tga");
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		update();
+		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 
-		x++;
-		if(x > 800 - 256) {
-			batch.draw(img, x2, 0);
-			x2++;
-			if(x > 800 + 256) {
-				x = 0;
-				x2 = -256;
-			}
-		}
-		batch.draw(img, x, 0);
+		x += 1.5;
+		y++;
+		batch.draw(img, x, y);
 
 
 
 		batch.end();
+	}
+
+	public void update(){
+		x ++;
+		y++;
 	}
 	
 	@Override
