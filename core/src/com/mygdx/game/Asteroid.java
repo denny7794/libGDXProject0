@@ -54,7 +54,8 @@ public class Asteroid {
         if(position.y > Gdx.graphics.getHeight()) position.y = -myTexture.getHeight();
 
         if(InputHandler.isPressed()){
-          velocity = position.cpy().sub(InputHandler.getMousePosition()).nor().scl(-1.0f);
+            if(position.cpy().sub(InputHandler.getMousePosition()).len() < 150)
+                velocity = position.cpy().sub(InputHandler.getMousePosition()).nor().scl(1.0f);
         }
     }
 }
