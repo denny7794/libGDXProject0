@@ -10,6 +10,7 @@ public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	float x;
+	float x2 = -256;
 	
 	@Override
 	public void create () {
@@ -24,7 +25,16 @@ public class MainClass extends ApplicationAdapter {
 		batch.begin();
 
 		x++;
+		if(x > 800 - 256) {
+			batch.draw(img, x2, 0);
+			x2++;
+			if(x > 800 + 256) {
+				x = 0;
+				x2 = -256;
+			}
+		}
 		batch.draw(img, x, 0);
+
 
 
 		batch.end();
