@@ -5,13 +5,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 
 import java.util.Random;
 
 public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	//Texture img;
-	private final int AST_COUNT = 10;
+	private final int AST_COUNT = 50;
 	Asteroid[] ast = new Asteroid[AST_COUNT];
 	Random rand = new Random();
 	//float x;
@@ -23,7 +24,8 @@ public class MainClass extends ApplicationAdapter {
 		//img = new Texture("asteroid.tga");
 		Asteroid.setMyTexture(new Texture("asteroid.tga"));
 		for (int i = 0; i < AST_COUNT; i++) {
-			ast[i] = new Asteroid(rand.nextInt(800), rand.nextInt(600), (3.0f * rand.nextFloat() - 0.5f), (3.0f * rand.nextFloat() - 0.5f));
+			//ast[i] = new Asteroid(rand.nextInt(800), rand.nextInt(600), (3.0f * rand.nextFloat() - 0.5f), (3.0f * rand.nextFloat() - 0.5f));
+			ast[i] = new Asteroid(new Vector2(rand.nextInt(800), rand.nextInt(600)), new Vector2(3.0f * (rand.nextFloat() - 0.5f), (3.0f * (rand.nextFloat() - 0.5f))));
 		}
 	}
 
