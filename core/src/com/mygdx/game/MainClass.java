@@ -15,7 +15,7 @@ public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	BitmapFont bmf;
 	Texture img;
-	private final int AST_COUNT = 2;
+	private final int AST_COUNT = 5;
 	//Asteroid[] ast = new Asteroid[AST_COUNT];
 	ArrayList<Asteroid> ast = new ArrayList<Asteroid>();
 	Random rand = new Random();
@@ -69,19 +69,29 @@ public class MainClass extends ApplicationAdapter {
 
 		bmf.draw(batch, "Таймер: " + (int)c + " Столкновений: " + bang, 50, 50);
 
+		for (int i = 0; i < AST_COUNT; i++) {
+			bmf.draw(batch, "" + i, ast.get(i).getPosition().x, ast.get(i).getPosition().y);
+		}
+
+
 		batch.end();
 	}
 
 	public void update(){
 		for (int i = 0; i < AST_COUNT; i++) {
 			ast.get(i).update();
+
 		}
 
 		/* Проверка столкновений астероидов */
 		for (int i = 0; i < ast.size(); i++) {
 			for (int j = i + 1; j < ast.size(); j++) {
 				if(ast.get(i).getPosition().cpy().sub(ast.get(j).getPosition().cpy()).len() < 40){
+					/*ast.remove(i);
+					ast.remove(j);*/
 					bang++;
+					/*j--;
+					i--;*/
 				}
 			}
 		}
