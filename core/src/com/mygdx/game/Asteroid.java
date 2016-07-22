@@ -38,6 +38,15 @@ public class Asteroid {
 
     //public float getY() { return y; }
 
+
+    public Vector2 getPosition() {
+        return position;
+    }
+
+    public Vector2 getVelocity() {
+        return velocity;
+    }
+
     public void render(SpriteBatch batch){
         //batch.draw(myTexture, x, y);
         batch.draw(myTexture, position.x - 20, position.y - 20);
@@ -58,5 +67,7 @@ public class Asteroid {
             if(position.cpy().sub(InputHandler.getMousePosition()).len() < 100)
                 velocity = position.cpy().sub(InputHandler.getMousePosition()).nor().scl(-5.0f);
         }
+
+
     }
 }

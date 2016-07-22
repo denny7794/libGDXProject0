@@ -14,7 +14,7 @@ public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	BitmapFont bmf;
 	Texture img;
-	private final int AST_COUNT = 50;
+	private final int AST_COUNT = 2;
 	Asteroid[] ast = new Asteroid[AST_COUNT];
 	Random rand = new Random();
 	//float x;
@@ -22,6 +22,7 @@ public class MainClass extends ApplicationAdapter {
 	float x = 10.0f;
 	float y = 80.0f;
 	float c = 0.0f;
+	int bang;
 
 	@Override
 	public void create () {
@@ -57,7 +58,7 @@ public class MainClass extends ApplicationAdapter {
 		batch.draw(img, x, y);
 		if(InputHandler.keyUp()) y++;
 
-		bmf.draw(batch, "Таймер: " + (int)c, 50, 50);
+		bmf.draw(batch, "Таймер: " + (int)c + " Столкновений: " + bang, 50, 50);
 
 		batch.end();
 	}
@@ -67,6 +68,14 @@ public class MainClass extends ApplicationAdapter {
 			ast[i].update();
 		}
 
+		/* Проверка столкновений астероидов */
+		for (int i = 0; i < ast.length ; i++) {
+			for (int j = i + 1; j < ast.length; j++) {
+				if(ast[i].getPosition().cpy().sub(ast[j].getPosition().cpy()).len() < 40){
+					bang++;
+				}
+			}
+		}
 	}
 	
 	@Override
