@@ -15,7 +15,7 @@ public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	BitmapFont bmf;
 	Texture img;
-	private final int AST_COUNT = 5;
+	private final int AST_COUNT = 100;
 	//Asteroid[] ast = new Asteroid[AST_COUNT];
 	ArrayList<Asteroid> ast = new ArrayList<Asteroid>();
 	Random rand = new Random();
@@ -58,7 +58,7 @@ public class MainClass extends ApplicationAdapter {
 		/*for (int i = 0; i < AST_COUNT; i++) {
 			ast[i].render(batch);
 		}*/
-		for (int i = 0; i < AST_COUNT; i++) {
+		for (int i = 0; i < ast.size(); i++) {
 			ast.get(i).render(batch);
 		}
 
@@ -69,7 +69,7 @@ public class MainClass extends ApplicationAdapter {
 
 		bmf.draw(batch, "Таймер: " + (int)c + " Столкновений: " + bang, 50, 50);
 
-		for (int i = 0; i < AST_COUNT; i++) {
+		for (int i = 0; i < ast.size(); i++) {
 			bmf.draw(batch, "" + i, ast.get(i).getPosition().x, ast.get(i).getPosition().y);
 		}
 
@@ -78,7 +78,7 @@ public class MainClass extends ApplicationAdapter {
 	}
 
 	public void update(){
-		for (int i = 0; i < AST_COUNT; i++) {
+		for (int i = 0; i < ast.size(); i++) {
 			ast.get(i).update();
 
 		}
@@ -87,11 +87,12 @@ public class MainClass extends ApplicationAdapter {
 		for (int i = 0; i < ast.size(); i++) {
 			for (int j = i + 1; j < ast.size(); j++) {
 				if(ast.get(i).getPosition().cpy().sub(ast.get(j).getPosition().cpy()).len() < 40){
-					/*ast.remove(i);
-					ast.remove(j);*/
+					ast.remove(i);
+					i--;
+					j--;
+					ast.remove(j);
 					bang++;
-					/*j--;
-					i--;*/
+					break;
 				}
 			}
 		}
