@@ -22,6 +22,6 @@ public class InputHandler {
     }
 
     public static boolean d1(){
-        return Gdx.input.isButtonPressed(Input.Keys.B);
+        return Gdx.input.isKeyPressed(Input.Keys.UP);
     }
 }
