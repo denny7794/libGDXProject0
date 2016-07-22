@@ -21,6 +21,7 @@ public class MainClass extends ApplicationAdapter {
 	//float y;
 	float x = 10.0f;
 	float y = 80.0f;
+	float c = 0.0f;
 
 	@Override
 	public void create () {
@@ -47,13 +48,15 @@ public class MainClass extends ApplicationAdapter {
 		time += 0.5f;
 		//batch.draw(img, InputHandler.getMousePosition().x - 20, InputHandler.getMousePosition().y - 20, 20, 20, 40, 40, 2.0f, 2.0f, time, 0, 0, 40, 40, false, false);
 		//batch.draw(img, ast.getX(), ast.getY());
-		x += 65.0f * Gdx.graphics.getDeltaTime();
-		batch.draw(img, x, y);
 		for (int i = 0; i < AST_COUNT; i++) {
 			ast[i].render(batch);
 		}
-		bmf.draw(batch, "Hello МИР!", 50, 50);
 
+		x += 65.0f * Gdx.graphics.getDeltaTime();
+		c += Gdx.graphics.getDeltaTime();
+		batch.draw(img, x, y);
+
+		bmf.draw(batch, "Таймер: " + (int)c, 50, 50);
 
 		batch.end();
 	}
