@@ -85,15 +85,21 @@ public class MainClass extends ApplicationAdapter {
 
 		/* Проверка столкновений астероидов */
 		for (int i = 0; i < ast.size(); i++) {
+			boolean bang_flag = false;
 			for (int j = i + 1; j < ast.size(); j++) {
 				if(ast.get(i).getPosition().cpy().sub(ast.get(j).getPosition().cpy()).len() < 40){
-					ast.remove(i);
-					i--;
-					j--;
+					//ast.remove(i);
+					//i--;
+					//j--;
 					ast.remove(j);
-					bang++;
-					break;
+					j--;
+					bang_flag = true;
 				}
+			}
+			if(bang_flag){
+				ast.remove(i);
+				i--;
+				bang++;
 			}
 		}
 	}
