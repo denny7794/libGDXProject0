@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainClass extends ApplicationAdapter {
@@ -15,7 +16,8 @@ public class MainClass extends ApplicationAdapter {
 	BitmapFont bmf;
 	Texture img;
 	private final int AST_COUNT = 2;
-	Asteroid[] ast = new Asteroid[AST_COUNT];
+	//Asteroid[] ast = new Asteroid[AST_COUNT];
+	ArrayList<Asteroid> ast = new ArrayList<Asteroid>();
 	Random rand = new Random();
 	//float x;
 	//float y;
@@ -31,10 +33,14 @@ public class MainClass extends ApplicationAdapter {
 		Asteroid.setMyTexture(new Texture("asteroid.tga"));
 		bmf = new BitmapFont(Gdx.files.internal("myfont.fnt"), Gdx.files.internal("myfont.png"), false);
 		img = new Texture("bomber.tga");
-		for (int i = 0; i < AST_COUNT; i++) {
+		/*for (int i = 0; i < AST_COUNT; i++) {
 			//ast[i] = new Asteroid(rand.nextInt(800), rand.nextInt(600), (3.0f * rand.nextFloat() - 0.5f), (3.0f * rand.nextFloat() - 0.5f));
 			ast[i] = new Asteroid(new Vector2(rand.nextInt(800), rand.nextInt(600)), new Vector2(3.0f * (rand.nextFloat() - 0.5f), (3.0f * (rand.nextFloat() - 0.5f))));
+		}*/
+		for (int i = 0; i < AST_COUNT; i++) {
+			ast.add(new Asteroid(new Vector2(rand.nextInt(800), rand.nextInt(600)), new Vector2(3.0f * (rand.nextFloat() - 0.5f), (3.0f * (rand.nextFloat() - 0.5f)))));
 		}
+
 	}
 
 	float time = 0.0f;
@@ -49,8 +55,11 @@ public class MainClass extends ApplicationAdapter {
 		time += 0.5f;
 		//batch.draw(img, InputHandler.getMousePosition().x - 20, InputHandler.getMousePosition().y - 20, 20, 20, 40, 40, 2.0f, 2.0f, time, 0, 0, 40, 40, false, false);
 		//batch.draw(img, ast.getX(), ast.getY());
-		for (int i = 0; i < AST_COUNT; i++) {
+		/*for (int i = 0; i < AST_COUNT; i++) {
 			ast[i].render(batch);
+		}*/
+		for (int i = 0; i < AST_COUNT; i++) {
+			ast.get(i).render(batch);
 		}
 
 		x += 65.0f * Gdx.graphics.getDeltaTime();
@@ -65,13 +74,13 @@ public class MainClass extends ApplicationAdapter {
 
 	public void update(){
 		for (int i = 0; i < AST_COUNT; i++) {
-			ast[i].update();
+			ast.get(i).update();
 		}
 
 		/* Проверка столкновений астероидов */
-		for (int i = 0; i < ast.length ; i++) {
-			for (int j = i + 1; j < ast.length; j++) {
-				if(ast[i].getPosition().cpy().sub(ast[j].getPosition().cpy()).len() < 40){
+		for (int i = 0; i < ast.size(); i++) {
+			for (int j = i + 1; j < ast.size(); j++) {
+				if(ast.get(i).getPosition().cpy().sub(ast.get(j).getPosition().cpy()).len() < 40){
 					bang++;
 				}
 			}
