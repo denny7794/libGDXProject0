@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
@@ -11,6 +12,7 @@ import java.util.Random;
 
 public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
+	BitmapFont bmf;
 	Texture img;
 	private final int AST_COUNT = 1000;
 	Asteroid[] ast = new Asteroid[AST_COUNT];
@@ -23,6 +25,7 @@ public class MainClass extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		//img = new Texture("asteroid.tga");
 		Asteroid.setMyTexture(new Texture("asteroid.tga"));
+		bmf = new BitmapFont(Gdx.files.internal("myfont.fnt"), Gdx.files.internal("myfont.png"), false);
 		img = new Texture("bomber.tga");
 		for (int i = 0; i < AST_COUNT; i++) {
 			//ast[i] = new Asteroid(rand.nextInt(800), rand.nextInt(600), (3.0f * rand.nextFloat() - 0.5f), (3.0f * rand.nextFloat() - 0.5f));
@@ -45,7 +48,7 @@ public class MainClass extends ApplicationAdapter {
 		for (int i = 0; i < AST_COUNT; i++) {
 			ast[i].render(batch);
 		}
-
+		bmf.draw(batch, "Hello World!", 50, 50);
 
 
 		batch.end();
