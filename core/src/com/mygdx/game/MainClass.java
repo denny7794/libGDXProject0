@@ -12,7 +12,7 @@ import java.util.Random;
 public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	private final int AST_COUNT = 100;
+	private final int AST_COUNT = 10;
 	Asteroid[] ast = new Asteroid[AST_COUNT];
 	Random rand = new Random();
 	//float x;
@@ -30,14 +30,17 @@ public class MainClass extends ApplicationAdapter {
 		}
 	}
 
+	float time = 0.0f;
+
 	@Override
 	public void render () {
 		update();
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(img, InputHandler.getMousePosition().x, InputHandler.getMousePosition().y);
-
+		//batch.draw(img, InputHandler.getMousePosition().x, InputHandler.getMousePosition().y);
+		time += 0.5f;
+		batch.draw(img, InputHandler.getMousePosition().x - 20, InputHandler.getMousePosition().y - 20, 20, 20, 40, 40, 5.0f, 5.0f, time, 0, 0, 40, 40, false, false);
 		//batch.draw(img, ast.getX(), ast.getY());
 		for (int i = 0; i < AST_COUNT; i++) {
 			ast[i].render(batch);

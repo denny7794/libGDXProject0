@@ -55,7 +55,7 @@ public class Asteroid {
 
         if(InputHandler.isPressed()){
             if(position.cpy().sub(InputHandler.getMousePosition()).len() < 150)
-                velocity = position.cpy().sub(InputHandler.getMousePosition()).nor().scl(1.0f);
+                velocity = position.cpy().sub(InputHandler.getMousePosition()).nor().scl(5.0f);
         }
     }
 }
