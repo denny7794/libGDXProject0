@@ -91,14 +91,14 @@ public class MainClass extends ApplicationAdapter {
 					//ast.remove(i);
 					//i--;
 					//j--;
-					ast.remove(j);
-					j--;
+					ast.remove(j--);
+					//j--;
 					bang_flag = true;
 				}
 			}
 			if(bang_flag){
-				ast.remove(i);
-				i--;
+				ast.remove(i--);
+				//i--;
 				bang++;
 			}
 		}
