@@ -21,7 +21,7 @@ public class InputHandler {
         return new Vector2(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY());
     }
 
-    public static boolean d1(){
+    public static boolean keyUp(){
         return Gdx.input.isKeyPressed(Input.Keys.UP);
     }
 }

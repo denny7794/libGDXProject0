@@ -55,7 +55,7 @@ public class MainClass extends ApplicationAdapter {
 		x += 65.0f * Gdx.graphics.getDeltaTime();
 		c += Gdx.graphics.getDeltaTime();
 		batch.draw(img, x, y);
-		if(InputHandler.d1()) y++;
+		if(InputHandler.keyUp()) y++;
 
 		bmf.draw(batch, "Таймер: " + (int)c, 50, 50);
 
