@@ -14,7 +14,8 @@ public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	BitmapFont bmf;
 	Texture img;
-	private final int AST_COUNT = 50;
+	Texture img2;
+	private final int AST_COUNT = 1;
 	Asteroid[] ast = new Asteroid[AST_COUNT];
 	Random rand = new Random();
 	//float x;
@@ -30,6 +31,7 @@ public class MainClass extends ApplicationAdapter {
 		Asteroid.setMyTexture(new Texture("asteroid.tga"));
 		bmf = new BitmapFont(Gdx.files.internal("myfont.fnt"), Gdx.files.internal("myfont.png"), false);
 		img = new Texture("bomber.tga");
+		img2 = new Texture("map.tga");
 		for (int i = 0; i < AST_COUNT; i++) {
 			//ast[i] = new Asteroid(rand.nextInt(800), rand.nextInt(600), (3.0f * rand.nextFloat() - 0.5f), (3.0f * rand.nextFloat() - 0.5f));
 			ast[i] = new Asteroid(new Vector2(rand.nextInt(800), rand.nextInt(600)), new Vector2(3.0f * (rand.nextFloat() - 0.5f), (3.0f * (rand.nextFloat() - 0.5f))));
@@ -44,6 +46,14 @@ public class MainClass extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
+
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				batch.draw(img2, 0 + j * 40, 0 + i * 40, 0, 0, 40, 40);
+			}
+		}
+
+
 		//batch.draw(img, InputHandler.getMousePosition().x, InputHandler.getMousePosition().y);
 		time += 0.5f;
 		//batch.draw(img, InputHandler.getMousePosition().x - 20, InputHandler.getMousePosition().y - 20, 20, 20, 40, 40, 2.0f, 2.0f, time, 0, 0, 40, 40, false, false);
