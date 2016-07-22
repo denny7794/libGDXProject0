@@ -52,6 +52,8 @@ public class MainClass extends ApplicationAdapter {
 				batch.draw(img2, 0 + j * 40, 0 + i * 40, 0, 0, 40, 40);
 				if (j == 0)
 					batch.draw(img2, 0 + j * 40, 0 + i * 40, 40, 0, 40, 40);
+				if (j == 2)
+					batch.draw(img2, 0 + j * 40, 0 + i * 40, 80, 0, 40, 40);
 			}
 		}
 
